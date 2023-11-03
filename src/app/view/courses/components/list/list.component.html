@@ -1,6 +1,22 @@
-<p>list works!</p>
 <app-header-list></app-header-list>
 <div class="list">
-    <app-item-list *ngFor="let item of [1,2,3,4,5]" item="item"></app-item-list>
+    <div class="item-list" *ngFor="let item of list" trackBy:id>
+        <div class="item-header" >
+            <p class="item-title" > {{item.title}} </p>
+            <div class="item-header-details">
+                <p class="item-duration"  > {{item.duration}} </p>
+                <p class="item-date"  > {{item.date.getTime()}} </p>
+            </div>
+        </div>
+        <p> {{item.description}} </p>
+        <div class="item-actions" >
+            <button type="button" class="item-action" >
+                Edit
+            </button>
+            <button type="button" class="item-action" >
+                Delete
+            </button>
+        </div>
+    </div>
 </div>
 <app-footer-list></app-footer-list>

@@ -1,1 +1,13 @@
-<p>header-list works!</p>
+<form class="search-form" >
+    <input 
+        class="search" 
+        placeholder="Text to search" 
+        type="search" 
+        [(ngModel)]="search"
+        [ngModelOptions]="{standalone: true}"
+    />
+    <button class="search-btn" (click)="submit($event)" > search </button>
+</form>
+<div class="list-header">
+    <button class="add-course" (click)="addCourse()" > + Add course </button>
+</div>

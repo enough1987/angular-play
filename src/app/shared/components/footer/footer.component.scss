@@ -1,0 +1,13 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:azure;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
