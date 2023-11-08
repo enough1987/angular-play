@@ -5,9 +5,14 @@
         type="search" 
         [(ngModel)]="search"
         [ngModelOptions]="{standalone: true}"
+        data-testid="input"
     />
-    <button class="search-btn" (click)="submit($event)" > search </button>
+    <button class="search-btn" (click)="submit($event)" 
+        data-testid="search"
+    > search </button>
 </form>
 <div class="list-header">
-    <button class="add-course" (click)="addCourse()" > + Add course </button>
+    <button class="add-course" (click)="addCourse()" 
+      data-testid="add-course"
+    > + Add course </button>
 </div>

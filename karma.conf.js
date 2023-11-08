@@ -32,7 +32,15 @@ module.exports = function (config) {
         { type: 'text-summary' }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    check: {
+      global: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80
+      }
+    },
+    reporters: ['progress', 'kjhtml', 'text-summary'],
     browsers: ['Chrome'],
     restartOnFileChange: true
   });

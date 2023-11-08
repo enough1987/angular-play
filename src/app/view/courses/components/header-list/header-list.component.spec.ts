@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { HeaderListComponent } from './header-list.component';
 import { CoursesModule } from '../../courses.module';
@@ -20,4 +20,26 @@ describe('HeaderListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should search', fakeAsync(() => {
+    const nativeElement: HTMLElement = fixture.debugElement.nativeElement;
+    const p = nativeElement.querySelector('[data-testid="search"]') as HTMLElement;
+    spyOn(console, 'log');
+
+    p?.click();
+    tick(100);
+
+    expect(console.log).toHaveBeenCalledWith('')
+  }));
+
+  it('should add course', fakeAsync(() => {
+    const nativeElement: HTMLElement = fixture.debugElement.nativeElement;
+    const p = nativeElement.querySelector('[data-testid="add-course"]') as HTMLElement;
+    spyOn(console, 'log');
+
+    p?.click();
+    tick(100);
+
+    expect(console.log).toHaveBeenCalledWith('add course')
+  }));
 });

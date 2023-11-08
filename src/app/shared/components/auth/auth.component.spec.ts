@@ -20,4 +20,16 @@ describe('AuthComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have log in button', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const p = element.querySelector('[data-testid="login"]');
+    expect(p?.textContent).toContain('User login');
+  });
+
+  it('should have log out button', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const p = element.querySelector('[data-testid="loginout"]');
+    expect(p?.textContent).toContain(' Log off');
+  });
 });
