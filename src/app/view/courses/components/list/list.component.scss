@@ -20,6 +20,7 @@
 
 .item-title {
     font-weight: bold;
+    display: flex;
 }
 
 .item-header-details {
@@ -33,4 +34,16 @@
 
 .item-action {
     width: 30%;
+}
+
+.no-data {
+    text-align: center;
+}
+
+.topRated {
+    background: rgb(166, 197, 190);
+}
+
+.topRated-icon {
+    width: 100px;
 }

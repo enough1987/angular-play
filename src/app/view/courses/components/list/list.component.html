@@ -1,11 +1,22 @@
 <app-header-list></app-header-list>
 <div class="list">
-    <div class="item-list" *ngFor="let item of list" trackBy:id>
+    <div 
+        class="item-list" 
+        *ngFor="let item of list | orderBy:'date' | filter:search" 
+        trackBy:id
+        [appCreationDate]="item.date"
+        [ngClass]="{'topRated':item.topRated}"
+    >
         <div class="item-header" >
-            <p class="item-title" > {{item.title}} </p>
+            <p class="item-title" > 
+                {{item.title | uppercase }} 
+                <span *ngIf="item.topRated" class="topRated-icon">
+                    <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>
+                </span>
+            </p>
             <div class="item-header-details">
-                <p class="item-duration"  > {{item.duration}} </p>
-                <p class="item-date"  > {{item.date.getTime()}} </p>
+                <p class="item-duration"  > {{item.duration | duration}} </p>
+                <p class="item-date"  > {{item.date | date:'d MMM y'}} </p>
             </div>
         </div>
         <p> {{item.description}} </p>
@@ -17,6 +28,9 @@
                 Delete
             </button>
         </div>
+    </div>
+    <div class="no-data" *ngIf="!list?.length">
+        NO DATA
     </div>
 </div>
 <app-footer-list></app-footer-list>
