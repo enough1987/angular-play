@@ -5,6 +5,7 @@
         type="search" 
         [(ngModel)]="search"
         [ngModelOptions]="{standalone: true}"
+        (input)="submit($event)"
         data-testid="input"
     />
     <button class="search-btn" (click)="submit($event)" 
