@@ -1,10 +1,18 @@
 <div class="auth">
-    <div class="auth-item" data-testid="login">
-        <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>
-        <p> User login </p>
+    <div class="auth-item" data-testid="login" 
+        *ngIf="!authenticated"
+    >
+        <a (click)="login()" >
+            <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>
+            <p> User login </p>
+        </a>
     </div>
-    <div class="auth-item" data-testid="loginout">
-        <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>
-        <p> Log off </p>
+    <div class="auth-item" data-testid="loginout" 
+        *ngIf="authenticated"
+    >
+        <a (click)="logout()">
+            <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>
+            <p> Log off </p>
+        </a>
     </div>
 </div>

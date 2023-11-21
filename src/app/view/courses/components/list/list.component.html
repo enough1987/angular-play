@@ -21,10 +21,14 @@
         </div>
         <p> {{item.description}} </p>
         <div class="item-actions" >
-            <button type="button" class="item-action" >
+            <button type="button" class="item-action" 
+                (click)="editCourse(item)"
+            >
                 Edit
             </button>
-            <button type="button" class="item-action" >
+            <button type="button" class="item-action" 
+                (click)="removeCourse(item.id)"
+            >
                 Delete
             </button>
         </div>

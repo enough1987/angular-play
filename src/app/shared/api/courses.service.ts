@@ -29,6 +29,15 @@ const nameList = [
   'Geo', 'Genome', 'Germ', 'Spaz', 'Shot', 'Echo', 'Beta', 'Alpha',
 ];
 
+const data = Array(15).fill(null).map((_, i) => i).map(i => ({
+  id: 'id' + i,
+  title: nameList[i],
+  date: getRandomDate(),
+  duration: Math.floor(Math.random() * 3.6e+6) + 0,
+  description: 'description' + i + ' dfdf dfdfd dffdfd dderere rerer erere ererer  sdsd xzzzxzcvcxvcxv cxcxd swss23 23 sddf',
+  topRated: Math.random() < 0.5,
+}));
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,15 +46,43 @@ export class CoursesService {
 
   constructor() {}
 
-  getHeroes() {
-    this.data = Array(15).fill(null).map((_, i) => i).map(i => ({
-      id: 'id' + i,
-      title: nameList[i],
+  getList() {
+    this.data = data;
+
+    return this.data;
+  }
+
+  getItemById(id: string): Course | null {
+    return this.data.find(item => item.id === id) || null;
+  }
+
+  createCourse() {
+    this.data.push({
+      id: 'id' + this.data.length,
+      title: nameList[this.data.length],
       date: getRandomDate(),
       duration: Math.floor(Math.random() * 3.6e+6) + 0,
-      description: 'description' + i + ' dfdf dfdfd dffdfd dderere rerer erere ererer  sdsd xzzzxzcvcxvcxv cxcxd swss23 23 sddf',
+      description: 'description' + this.data.length + ' dfdf dfdfd dffdfd dderere rerer erere ererer  sdsd xzzzxzcvcxvcxv cxcxd swss23 23 sddf',
       topRated: Math.random() < 0.5,
-    }));
+    });
+
+    return this.data;
+  }
+
+  updateItem(course: Course) {
+    this.data = this.data.map(item => {
+      if(item.id === course.id) {
+        return course;
+      }
+      return item; 
+    });
+
+    return this.data;
+  }
+
+  removeItem(id: string) {
+    this.data = this.data.filter(item => item.id !== id);
+
     return this.data;
   }
 }

@@ -1,7 +1,11 @@
 <div class="header">
     <div class="header-left">
-        <app-logo></app-logo>
-        <p class="title">Video course</p>
+        <a 
+            (click)="clickOnLogo()"
+        >   
+            <app-logo></app-logo>
+            <p class="title">Video course</p>
+        </a>
     </div>
 
     <app-auth></app-auth>

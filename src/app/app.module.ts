@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoursesModule } from './view/courses/courses.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthModule } from './view/auth/auth.module';
+
 
 @NgModule({
   declarations: [
@@ -12,10 +14,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
     CoursesModule,
-    BrowserAnimationsModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

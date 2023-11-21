@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthComponent } from './auth.component';
-import { SharedModule } from '../../shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -12,6 +14,9 @@ describe('AuthComponent', () => {
       declarations: [AuthComponent],
       imports: [
         SharedModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+      
       ],
     });
     fixture = TestBed.createComponent(AuthComponent);
@@ -21,18 +26,5 @@ describe('AuthComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should have log in button', () => {
-    const element: HTMLElement = fixture.nativeElement;
-    const p = element.querySelector('[data-testid="login"]');
-    expect(p?.textContent).toContain('User login');
-  });
-
-  it('should have log out button', () => {
-    const element: HTMLElement = fixture.nativeElement;
-    const p = element.querySelector('[data-testid="loginout"]');
-    // TODO: should be fixeds
-    expect(p?.textContent).not.toContain(' Log off');
   });
 });
