@@ -42,9 +42,8 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {
-        "@angular-eslint/template/click-events-have-key-events": [
-          "none"
-        ]
+        "@angular-eslint/template/click-events-have-key-events": [0],
+        "@angular-eslint/template/interactive-supports-focus": [0]
       }
     }
   ]

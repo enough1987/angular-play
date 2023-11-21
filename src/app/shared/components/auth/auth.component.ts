@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  authenticated: boolean = false;
+  authenticated = false;
 
   constructor(private router: Router, public authServiceService: AuthServiceService) {
     authServiceService.isAuthenticated().subscribe((authenticated) => {

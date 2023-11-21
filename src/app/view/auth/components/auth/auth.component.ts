@@ -9,7 +9,7 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  authenticated: boolean = false;
+  authenticated = false;
   user: User = {
     email: '',
     password: '',
