@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { StoreService } from 'src/app/shared/services/store.service';
 
 @Component({
@@ -9,15 +10,14 @@ import { StoreService } from 'src/app/shared/services/store.service';
 export class HeaderListComponent {
   public search = '';
 
-  constructor(public storeService: StoreService) {}
+  constructor(private router: Router, public storeService: StoreService) {}
 
   public submit(e: Event) {
     e.preventDefault();
-    console.log(this.search);
     this.storeService.changeSearch(this.search);
   }
 
   public addCourse() {
-    console.log('add course');
+    this.router.navigate(['/add-course']);
   }
 }

@@ -47,23 +47,23 @@ export class CoursesService {
   constructor() {}
 
   getList() {
-    this.data = data;
+    this.data = data ;
 
-    return this.data;
+    return this.data as Course[];
   }
 
   getItemById(id: string): Course | null {
     return this.data.find(item => item.id === id) || null;
   }
 
-  createCourse() {
+  createCourse(course: Course) {
     this.data.push({
-      id: 'id' + this.data.length,
-      title: nameList[this.data.length],
-      date: getRandomDate(),
-      duration: Math.floor(Math.random() * 3.6e+6) + 0,
-      description: 'description' + this.data.length + ' dfdf dfdfd dffdfd dderere rerer erere ererer  sdsd xzzzxzcvcxvcxv cxcxd swss23 23 sddf',
-      topRated: Math.random() < 0.5,
+      id: course?.id || 'id' + this.data.length,
+      title: course?.title || nameList[this.data.length],
+      date: course?.date || getRandomDate(),
+      duration: course?.duration || Math.floor(Math.random() * 3.6e+6) + 0,
+      description: course?.description || 'description' + this.data.length + ' dfdf dfdfd dffdfd dderere rerer erere ererer  sdsd xzzzxzcvcxvcxv cxcxd swss23 23 sddf',
+      topRated: typeof course?.topRated == "boolean" ? course?.topRated : Math.random() < 0.5,
     });
 
     return this.data;

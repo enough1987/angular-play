@@ -1,0 +1,33 @@
+<h3> Add course</h3>
+
+<p>
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="course.title" required placeholder="title">
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="course.description" required placeholder="description">
+    </mat-form-field>
+</p>
+<mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="course.date">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<p>
+    <mat-form-field appearance="outline">
+      <mat-label>Duration (min)</mat-label>
+      <input matInput [(ngModel)]="course.duration" type="number" required placeholder="duration">
+    </mat-form-field>
+</p>
+<section class="top-Rated-section">
+    <mat-checkbox class="top-Rated" [(ngModel)]="course.topRated" >Top Rated</mat-checkbox>
+</section>
+<div>
+    <button mat-button (click)="addCourse()">Add course</button>
+</div>

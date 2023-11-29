@@ -3,47 +3,9 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.item-list {
-    flex: 1 0 32%;
-    margin: 5px 5px 5px 0px;
-    padding: 5px;
-    border: 1px solid gainsboro;
-}
-
-.item-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-.item-title {
-    font-weight: bold;
-    display: flex;
-}
-
-.item-header-details {
-    display: flex;
-}
-
-.item-actions {
-    display: flex;
-    justify-content: space-around;
-}
-
-.item-action {
-    width: 30%;
+    justify-content: flex-start;
 }
 
 .no-data {
     text-align: center;
-}
-
-.topRated {
-    background: rgb(166, 197, 190);
-}
-
-.topRated-icon {
-    width: 100px;
 }

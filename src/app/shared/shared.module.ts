@@ -8,10 +8,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SearchComponent } from './components/search/search.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MODULES = [
     CommonModule,
@@ -20,13 +22,15 @@ const MODULES = [
     MatFormFieldModule,
     MatDialogModule,
     MatButtonModule,
+    MatDatepickerModule, 
+    MatNativeDateModule,
+    MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
 ];
 const COMPONENTS = [
   HeaderComponent,
   BreadcrumbsComponent,
-  SearchComponent,
   FooterComponent,
   LogoComponent,
   AuthComponent

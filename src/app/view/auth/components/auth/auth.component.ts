@@ -28,6 +28,5 @@ export class AuthComponent {
     }
     this.authServiceService.login(this.user)
     this.router.navigate(['']);
-
   }
 }

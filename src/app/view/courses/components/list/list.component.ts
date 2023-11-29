@@ -12,12 +12,12 @@ import { EditCourseModalComponent } from '../edit-course-modal copy/edit-course-
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  public list: Course[]
+  public list: Course[];
   public search = '';
 
   constructor(public coursesService: CoursesService, public storeService: StoreService, public dialog: MatDialog) {
     // TODO: change to async
-    this.list = coursesService.getList();
+    this.list = coursesService.getList() as Course[];
 
     storeService.search$.subscribe((value: string) => {
       this.search = value;
@@ -30,7 +30,7 @@ export class ListComponent {
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === 'yes') {
-        this.list = this.coursesService.removeItem(id);
+        this.list = this.coursesService.removeItem(id) as Course[];
       }
     });
   }
@@ -45,7 +45,7 @@ export class ListComponent {
         this.list = this.coursesService.updateItem({
           ...course,
           title: result.title
-        });
+        }) as Course[];
       }
     });
   }

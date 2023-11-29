@@ -8,11 +8,13 @@ import { DurationPipe } from './pipes/duration/duration.pipe';
 import { OrderByPipe } from './pipes/order-by/order-by.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ItemListComponent } from './components/item-list/item-list.component';
 
 @NgModule({
   declarations: [
     CoursesComponent,
     ListComponent,
+    ItemListComponent,
     HeaderListComponent,
     FooterListComponent,
     CreationDateDirective,

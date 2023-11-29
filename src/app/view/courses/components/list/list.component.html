@@ -1,38 +1,12 @@
 <app-header-list></app-header-list>
 <div class="list">
-    <div 
-        class="item-list" 
+    <app-item-list 
         *ngFor="let item of list | orderBy:'date' | filter:search" 
         trackBy:id
-        [appCreationDate]="item.date"
-        [ngClass]="{'topRated':item.topRated}"
-    >
-        <div class="item-header" >
-            <p class="item-title" > 
-                {{item.title | uppercase }} 
-                <span *ngIf="item.topRated" class="topRated-icon">
-                    <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>
-                </span>
-            </p>
-            <div class="item-header-details">
-                <p class="item-duration"  > {{item.duration | duration}} </p>
-                <p class="item-date"  > {{item.date | date:'d MMM y'}} </p>
-            </div>
-        </div>
-        <p> {{item.description}} </p>
-        <div class="item-actions" >
-            <button type="button" class="item-action" 
-                (click)="editCourse(item)"
-            >
-                Edit
-            </button>
-            <button type="button" class="item-action" 
-                (click)="removeCourse(item.id)"
-            >
-                Delete
-            </button>
-        </div>
-    </div>
+        [item]="item"
+        (edit)="editCourse($event)"
+        (delete)="removeCourse($event)"
+    />
     <div class="no-data" *ngIf="!list?.length">
         NO DATA
     </div>
