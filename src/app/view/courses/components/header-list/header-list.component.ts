@@ -18,6 +18,6 @@ export class HeaderListComponent {
   }
 
   public addCourse() {
-    this.router.navigate(['/add-course']);
+    this.router.navigate(['/courses/new']);
   }
 }

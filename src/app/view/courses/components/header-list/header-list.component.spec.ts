@@ -49,6 +49,6 @@ describe('HeaderListComponent', () => {
     p?.click();
     tick(100);
 
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['/add-course']);
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['/courses/new']);
   }));
 });

@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AddCourseComponent } from './add-course.component';
+import { CourseComponent } from './course.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AddCourseComponent', () => {
-  let component: AddCourseComponent;
-  let fixture: ComponentFixture<AddCourseComponent>;
+  let component: CourseComponent;
+  let fixture: ComponentFixture<CourseComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddCourseComponent],
+      declarations: [CourseComponent],
       imports: [
         SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
       ],
     });
-    fixture = TestBed.createComponent(AddCourseComponent);
+    fixture = TestBed.createComponent(CourseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

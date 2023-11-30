@@ -6,8 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoursesModule } from './view/courses/courses.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './view/auth/auth.module';
-import { AddCourseModule } from './view/add-course/add-course.module';
-
+import { CourseModule } from './view/course/course.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { AddCourseModule } from './view/add-course/add-course.module';
     SharedModule,
     CoursesModule,
     AuthModule,
-    AddCourseModule,
+    CourseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

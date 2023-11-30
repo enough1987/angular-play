@@ -29,5 +29,7 @@
     <mat-checkbox class="top-Rated" [(ngModel)]="course.topRated" >Top Rated</mat-checkbox>
 </section>
 <div>
-    <button mat-button (click)="addCourse()">Add course</button>
+    <button mat-button cdkFocusInitial *ngIf="!id" (click)="addCourse()">Add course</button>
+    <button mat-button cdkFocusInitial *ngIf="id" (click)="updateCourse()">Update course</button>
+    <button mat-button (click)="cancel()">Cancel</button>
 </div>

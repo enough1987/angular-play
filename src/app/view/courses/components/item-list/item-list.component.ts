@@ -9,11 +9,11 @@ import { Course } from 'src/app/view/declarations';
 })
 export class ItemListComponent {
   @Input({ required: true }) item!: Course;
-  @Output() edit = new EventEmitter<Course>();
+  @Output() edit = new EventEmitter<string>();
   @Output() delete = new EventEmitter<string>();
 
-  editCourse(item: Course) {
-    this.edit.emit(item);
+  editCourse(id: string) {
+    this.edit.emit(id);
   }
 
   removeCourse(id: string) {

@@ -4,7 +4,7 @@ import { CoursesService } from 'src/app/shared/api/courses.service';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { Course } from 'src/app/view/declarations';
 import { DeleteCourseModalComponent } from '../delete-course-modal/delete-course-modal.component';
-import { EditCourseModalComponent } from '../edit-course-modal copy/edit-course-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +15,7 @@ export class ListComponent {
   public list: Course[] = [];
   public search = '';
 
-  constructor(public coursesService: CoursesService, public storeService: StoreService, public dialog: MatDialog) {
+  constructor(private router: Router, public coursesService: CoursesService, public storeService: StoreService, public dialog: MatDialog) {
     // TODO: change to async
     this.list = coursesService.getList() as Course[];
 
@@ -35,18 +35,7 @@ export class ListComponent {
     });
   }
 
-  editCourse(course: Course) {
-    const dialogRef = this.dialog.open(EditCourseModalComponent, {
-      width: '250px',
-      data: course
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.actionName === 'yes') {
-        this.list = this.coursesService.updateItem({
-          ...course,
-          title: result.title
-        }) as Course[];
-      }
-    });
+  editCourse(id: string) {
+    this.router.navigate(['courses', id]);
   }
 }

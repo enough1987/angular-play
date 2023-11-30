@@ -44,7 +44,9 @@ const data = Array(15).fill(null).map((_, i) => i).map(i => ({
 export class CoursesService {
   private data: Course[] = [];
 
-  constructor() {}
+  constructor() {
+    this.data = this.getList();
+  }
 
   getList() {
     this.data = data ;
