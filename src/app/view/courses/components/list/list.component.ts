@@ -12,7 +12,7 @@ import { EditCourseModalComponent } from '../edit-course-modal copy/edit-course-
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  public list: Course[];
+  public list: Course[] = [];
   public search = '';
 
   constructor(public coursesService: CoursesService, public storeService: StoreService, public dialog: MatDialog) {

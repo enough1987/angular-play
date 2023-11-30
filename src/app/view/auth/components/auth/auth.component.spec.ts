@@ -16,7 +16,6 @@ describe('AuthComponent', () => {
         SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
-      
       ],
     });
     fixture = TestBed.createComponent(AuthComponent);

@@ -20,7 +20,7 @@ export class AddCourseComponent {
   constructor(private router: Router, public coursesService: CoursesService) {}
 
   addCourse() {
-    if(!this.course.title || !this.course.description || !this.course.date || !this.course.duration) {
+    if(!this.course?.title || !this.course?.description || !this.course?.date || !this.course?.duration) {
       console.error('all field are required');
       return;
     }
