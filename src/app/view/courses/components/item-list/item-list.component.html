@@ -2,18 +2,18 @@
     <div 
         class="item-list"
         [appCreationDate]="item.date"
-        [ngClass]="{'topRated':item.topRated}"
+        [ngClass]="{'topRated':item.isTopRated}"
     >
         <div class="item-clickable" (click)="editCourse(item.id)">
             <div class="item-header" >
                 <p class="item-title" > 
-                    {{item.title | uppercase }} 
-                    <span *ngIf="item.topRated" class="topRated-icon">
+                    {{item.name | uppercase }} 
+                    <span *ngIf="item.isTopRated" class="topRated-icon">
                         <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>
                     </span>
                 </p>
                 <div class="item-header-details">
-                    <p class="item-duration"  > {{item.duration | duration}} </p>
+                    <p class="item-duration"  > {{item.length | duration}} </p>
                     <p class="item-date"  > {{item.date | date:'d MMM y'}} </p>
                 </div>
             </div>

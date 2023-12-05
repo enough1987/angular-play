@@ -21,7 +21,7 @@ import { CourseModule } from './view/course/course.module';
     AuthModule,
     CourseModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: []
 })
 export class AppModule { }

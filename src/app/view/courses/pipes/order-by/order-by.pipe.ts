@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Course } from 'src/app/view/declarations';
+import { Course } from 'src/app/shared/declarations';
 
 @Pipe({
   name: 'orderBy'
@@ -7,7 +7,7 @@ import { Course } from 'src/app/view/declarations';
 export class OrderByPipe implements PipeTransform {
 
   transform(array: Array<Course>, field: string): Array<Course> {
-    array.sort((a: Course, b: Course) => {
+    array?.sort((a: Course, b: Course) => {
       if (a[field as never] < b[field as never]) {
         return -1;
       } else if (a[field as never] > b[field as never]) {

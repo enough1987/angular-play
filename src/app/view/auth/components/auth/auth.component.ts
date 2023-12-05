@@ -10,23 +10,25 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
 })
 export class AuthComponent {
   authenticated = false;
-  user: User = {
-    email: '',
+  user = {
+    login: '',
     password: '',
-  } as User;
+  };
 
   constructor(private router: Router, public authServiceService: AuthServiceService) {
     authServiceService.isAuthenticated().subscribe((authenticated) => {
       this.authenticated = authenticated;
+      if(this.authenticated) {
+        this.router.navigate(['']);
+      }
     });
   }
 
   login() {
-    if(!this.user.email || !this.user.password) {
+    if(!this.user.login || !this.user.password) {
       console.error('there are no email or password');
       return;
     }
-    this.authServiceService.login(this.user)
-    this.router.navigate(['']);
+    this.authServiceService.login(this.user.login, this.user.password);
   }
 }

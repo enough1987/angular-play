@@ -14,6 +14,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HttpClientModule } from '@angular/common/http';
 
 const MODULES = [
     CommonModule,
@@ -27,6 +28,8 @@ const MODULES = [
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+
 ];
 const COMPONENTS = [
   HeaderComponent,

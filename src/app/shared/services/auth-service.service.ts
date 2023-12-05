@@ -2,6 +2,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../declarations';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,36 +12,47 @@ export class AuthServiceService {
   user = new BehaviorSubject<User | null>(null);
   user$ = this.user.asObservable();
 
-  constructor() {
-    const _user = localStorage.getItem('user');
-    const user = _user ? JSON.parse(_user) : null;
-
-    this.user.next(user);
+  constructor(private http: HttpClient) {
+    this.getUserInfo();
   }
 
-  login(user: User): Observable<User | null> {
-    localStorage.setItem('user', JSON.stringify(user));
-    this.user.next(user);
+  login(login: string, password: string): Observable<User | null> {
+    const req = this.http.post<{
+      token: string;
+    }>('http://localhost:3004/auth/login', { login, password });
+    req.subscribe((res) => {
+      const token = res?.token;
+      localStorage.setItem('token', token || '');
+      this.getUserInfo();
+    });
+
     return this.user$;
   }
 
   logout(): Observable<User | null> {
+    localStorage.removeItem('token');
     this.user.next(null);
     return this.user$;
   }
 
   isAuthenticated(): Observable<boolean> {
-    const authenticated = new BehaviorSubject<boolean>(false);
-    const authenticated$ = authenticated.asObservable();
-
-    this.user$.subscribe((_user) => {
-      authenticated.next(!!_user);
-    });
-
-    return authenticated$;
+    return this.user$.pipe(
+      map((data) => {
+        return !!data
+      })
+    );
   }
 
   getUserInfo(): Observable<User | null> {
+    const token = localStorage.getItem('token');
+
+    if(!token) return this.user$;
+    
+    const req = this.http.post<User>('http://localhost:3004/auth/userinfo', { token });
+    req.subscribe((res) => {
+      this.user.next(res || null);
+    });
+
     return this.user$;
   }
 }

@@ -1,35 +1,37 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CoursesService } from 'src/app/shared/api/courses.service';
-import { Course } from 'src/app/view/declarations';
+import { Course } from 'src/app/shared/declarations';
+import { CoursesService } from 'src/app/shared/services/courses.service';
 
+const NEW_COURSE: Course = {
+  id: 0,
+  name: '',
+  date: '',
+  length: 0,
+  description: '',
+  authors: [],
+  isTopRated: false,
+}
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent {
-  id = '';
-  course: Course = {
-    title: '',
-    date: null,
-    duration: 0,
-    description: '',
-    topRated: false,
-  } as unknown as Course;
+  id = 0;
+  course: Course = NEW_COURSE;
 
   constructor(private router: Router, private route: ActivatedRoute, public coursesService: CoursesService) {
     this.route.paramMap.subscribe( params => {
-      this.id = params.get('id') || '';
-      const course = this.coursesService.getItemById(this.id) as Course;
-      if(course) {
-        this.course = course;
-      }
+      this.id = +(params.get('id') || 0);
+      this.id && this.coursesService.getItemById(this.id).subscribe((data) => {
+        this.course = data || NEW_COURSE;
+      });
     });
   }
 
   validate() {
-    if(!this.course?.title || !this.course?.description || !this.course?.date || !this.course?.duration) {
+    if(!this.course?.name || !this.course?.description || !this.course?.date || !this.course?.length) {
       console.error('all field are required');
       return false;
     }
@@ -47,9 +49,9 @@ export class CourseComponent {
   updateCourse() {
     if(!this.validate()) return;
 
-    this.coursesService.updateItem(this.course);
-
-    this.router.navigate(['']);
+    this.coursesService.updateItem(this.course).subscribe((res) => {
+      if(res) this.router.navigate(['']);
+    });
   }
 
   cancel() {

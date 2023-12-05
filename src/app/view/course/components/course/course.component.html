@@ -3,13 +3,14 @@
 <p>
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
-      <input matInput [(ngModel)]="course.title" required placeholder="title">
+      <input matInput [(ngModel)]="course.name" required placeholder="title" class="course-input">
     </mat-form-field>
 </p>
 <p>
     <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="course.description" required placeholder="description">
+      <textarea  matInput [(ngModel)]="course.description" required placeholder="description" class="course-input">
+      </textarea>
     </mat-form-field>
 </p>
 <mat-form-field>
@@ -22,11 +23,11 @@
 <p>
     <mat-form-field appearance="outline">
       <mat-label>Duration (min)</mat-label>
-      <input matInput [(ngModel)]="course.duration" type="number" required placeholder="duration">
+      <input matInput [(ngModel)]="course.length" type="number" required placeholder="duration" class="course-input">
     </mat-form-field>
 </p>
 <section class="top-Rated-section">
-    <mat-checkbox class="top-Rated" [(ngModel)]="course.topRated" >Top Rated</mat-checkbox>
+    <mat-checkbox class="top-Rated" [(ngModel)]="course.isTopRated" >Top Rated</mat-checkbox>
 </section>
 <div>
     <button mat-button cdkFocusInitial *ngIf="!id" (click)="addCourse()">Add course</button>

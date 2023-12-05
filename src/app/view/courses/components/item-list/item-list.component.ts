@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Course } from 'src/app/view/declarations';
+import { Course } from 'src/app/shared/declarations';
 
 @Component({
   selector: 'app-item-list',
@@ -9,14 +9,14 @@ import { Course } from 'src/app/view/declarations';
 })
 export class ItemListComponent {
   @Input({ required: true }) item!: Course;
-  @Output() edit = new EventEmitter<string>();
-  @Output() delete = new EventEmitter<string>();
+  @Output() edit = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<number>();
 
-  editCourse(id: string) {
+  editCourse(id: number) {
     this.edit.emit(id);
   }
 
-  removeCourse(id: string) {
+  removeCourse(id: number) {
     this.delete.emit(id);
   }
 

@@ -4,7 +4,7 @@ import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular
   selector: '[appCreationDate]'
 })
 export class CreationDateDirective implements OnChanges {
-  @Input('appCreationDate') date!: Date;
+  @Input('appCreationDate') date!: string;
 
   constructor(private el: ElementRef) {}
 
