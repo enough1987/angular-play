@@ -3,8 +3,9 @@ import { CourseComponent } from './course.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('AddCourseComponent', () => {
+describe('CourseComponent', () => {
   let component: CourseComponent;
   let fixture: ComponentFixture<CourseComponent>;
 
@@ -15,6 +16,7 @@ describe('AddCourseComponent', () => {
         SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
+        RouterTestingModule
       ],
     });
     fixture = TestBed.createComponent(CourseComponent);
