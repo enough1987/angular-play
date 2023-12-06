@@ -13,6 +13,9 @@ export class AuthComponent {
   constructor(private router: Router, public authServiceService: AuthServiceService) {
     authServiceService.isAuthenticated().subscribe((authenticated) => {
       this.authenticated = authenticated;
+      if(!this.authenticated){
+        this.router.navigate(['login']);
+      }
     });
   }
 
