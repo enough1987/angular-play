@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoursesComponent } from './view/courses/courses.component';
-import { AuthComponent } from './view/auth/components/auth/auth.component';
-import { CourseComponent } from './view/course/components/course/course.component';
-import { NotFoundComponent } from './view/not-found/components/not-found/not-found.component';
+import { CoursesComponent } from './features/courses/courses.component';
+import { AuthViewComponent } from './features/auth/components/auth/auth.component';
+import { CourseComponent } from './features/course/components/course/course.component';
+import { NotFoundComponent } from './features/not-found/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/courses', pathMatch: 'full' },
-  { path: 'login', component: AuthComponent },
+  { path: 'login', component: AuthViewComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'courses/new', component: CourseComponent },
   { path: 'courses/:id', component: CourseComponent },
