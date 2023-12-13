@@ -1,12 +1,15 @@
 <div>
     <h1> Login </h1>
     <div>
+        <mat-error *ngIf="checked && !user.login">Please enter a valid login</mat-error>
         <mat-form-field>
             <input matInput [(ngModel)]="user.login" placeholder="Login" required>
         </mat-form-field>
         <mat-hint>Hint login: flastname</mat-hint>
+
     </div>
     <div>
+        <mat-error *ngIf="checked && !user.password">Please enter a valid password</mat-error>
         <mat-form-field>
             <input matInput [(ngModel)]="user.password" placeholder="Password" required>
         </mat-form-field>

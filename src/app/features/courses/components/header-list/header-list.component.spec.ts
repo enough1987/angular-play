@@ -2,24 +2,24 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 
 import { HeaderListComponent } from './header-list.component';
 import { CoursesModule } from '../../courses.module';
-import { StoreService } from '@core/services/store.service';
 import { Router } from '@angular/router';
+import { CoursesService } from '@app/core/services/courses.service';
 
 describe('HeaderListComponent', () => {
   let component: HeaderListComponent;
   let fixture: ComponentFixture<HeaderListComponent>;
-  let mockStoreService: StoreService;
+  let mockCoursesService: CoursesService;
   let mockRouter: Router;
 
   beforeEach(() => {
-    mockStoreService = jasmine.createSpyObj(['changeSearch']);
+    mockCoursesService = jasmine.createSpyObj(['changeSearch']);
     mockRouter = jasmine.createSpyObj(['navigate']);
 
     TestBed.configureTestingModule({
       declarations: [HeaderListComponent],
       imports: [CoursesModule],
       providers: [ 
-        { provide: StoreService, useValue: mockStoreService },
+        { provide: CoursesService, useValue: mockCoursesService },
         { provide: Router, useValue: mockRouter },
       ]
     });
@@ -39,7 +39,7 @@ describe('HeaderListComponent', () => {
     p?.click();
     tick(100);
 
-    expect(mockStoreService.changeSearch).toHaveBeenCalledWith('');
+    expect(mockCoursesService.changeSearch).toHaveBeenCalledWith('');
   }));
 
   it('should add course', fakeAsync(() => {

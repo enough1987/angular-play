@@ -4,7 +4,6 @@ import { DeleteCourseModalComponent } from '../delete-course-modal/delete-course
 import { Router } from '@angular/router';
 import { Course } from '@app/models';
 import { CoursesService } from '@core/services/courses.service';
-import { StoreService } from '@core/services/store.service';
 
 @Component({
   selector: 'app-list',
@@ -14,16 +13,10 @@ import { StoreService } from '@core/services/store.service';
 })
 export class ListComponent {
   public list: Course[] = [];
-  public search = '';
 
-  constructor(private cd: ChangeDetectorRef, private router: Router, public coursesService: CoursesService, public storeService: StoreService, public dialog: MatDialog) {
+  constructor(private cd: ChangeDetectorRef, private router: Router, public coursesService: CoursesService, public dialog: MatDialog) {
     coursesService.getList().subscribe((data) => {
       this.list = data as Course[];
-      this.cd.markForCheck();
-    });
-
-    storeService.search$.subscribe((value: string) => {
-      this.search = value;
       this.cd.markForCheck();
     });
   }

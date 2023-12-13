@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { AuthServiceService } from '../../services/auth-service.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,12 +11,10 @@ import { Router } from '@angular/router';
 export class AuthControlComponent {
   authenticated = false;
 
-  constructor(private cd: ChangeDetectorRef, private router: Router, public authServiceService: AuthServiceService) {
+  constructor(private cd: ChangeDetectorRef, private router: Router, public authServiceService: AuthService) {
     authServiceService.isAuthenticated().subscribe((authenticated) => {
       this.authenticated = authenticated;
       this.cd.markForCheck();
-
-      if(!this.authenticated) this.router.navigate(['login']);
     });
   }
 
@@ -26,6 +24,7 @@ export class AuthControlComponent {
 
   logout() {
     this.authServiceService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

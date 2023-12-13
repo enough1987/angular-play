@@ -1,7 +1,7 @@
 <app-header-list></app-header-list>
 <div class="list">
     <app-item-list 
-        *ngFor="let item of list | orderBy:'date' | filter:search" 
+        *ngFor="let item of list | orderBy:'date'" 
         trackBy:id
         [item]="item"
         (edit)="editCourse($event)"

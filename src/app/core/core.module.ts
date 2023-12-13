@@ -11,10 +11,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoComponent } from './components/logo/logo.component';
-import { AuthControlComponent } from './components/auth/auth-control.component';
+import { AuthControlComponent } from './components/auth-control/auth-control.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SpinnerComponentComponent } from './components/spinner-component/spinner-component.component';
 
 const MODULES = [
   CommonModule,
@@ -38,11 +39,12 @@ const COMPONENTS = [
   HeaderComponent,
   BreadcrumbsComponent,
   FooterComponent,
+  SpinnerComponentComponent,
 ];
 
 @NgModule({
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
   ],
   imports: [
     ...MODULES

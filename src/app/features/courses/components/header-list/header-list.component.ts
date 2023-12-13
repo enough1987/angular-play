@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { StoreService } from '@core/services/store.service';
+import { CoursesService } from '@app/core/services/courses.service';
 
 @Component({
   selector: 'app-header-list',
@@ -11,11 +11,11 @@ import { StoreService } from '@core/services/store.service';
 export class HeaderListComponent {
   public search = '';
 
-  constructor(private router: Router, public storeService: StoreService) {}
+  constructor(private router: Router, public coursesService: CoursesService) {}
 
   public submit(e: Event) {
     e.preventDefault();
-    this.storeService.changeSearch(this.search);
+    this.coursesService.changeSearch(this.search);
   }
 
   public addCourse() {

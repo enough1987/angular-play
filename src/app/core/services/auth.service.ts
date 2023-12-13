@@ -4,19 +4,22 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { User } from '../../models';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
   user = new BehaviorSubject<User | null>(null);
   user$ = this.user.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loadingService: LoadingService) {
     this.getUserInfo();
   }
 
   login(login: string, password: string): Observable<User | null> {
+    this.loadingService.setLoading(true);
+
     const req = this.http.post<{
       token: string;
     }>('http://localhost:3004/auth/login', { login, password });
@@ -24,6 +27,8 @@ export class AuthServiceService {
       const token = res?.token;
       localStorage.setItem('token', token || '');
       this.getUserInfo();
+
+      this.loadingService.setLoading(false);
     });
 
     return this.user$;
@@ -35,6 +40,10 @@ export class AuthServiceService {
     return this.user$;
   }
 
+  isAuthenticatedSync(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
   isAuthenticated(): Observable<boolean> {
     return this.user$.pipe(
       map((data) => {
@@ -44,13 +53,18 @@ export class AuthServiceService {
   }
 
   getUserInfo(): Observable<User | null> {
-    const token = localStorage.getItem('token');
+    this.loadingService.setLoading(true);
 
-    if(!token) return this.user$;
+    const token = localStorage.getItem('token');
+    if(!token) {
+      this.loadingService.setLoading(false);
+      return this.user$;
+    }
     
     const req = this.http.post<User>('http://localhost:3004/auth/userinfo', { token });
     req.subscribe((res) => {
       this.user.next(res || null);
+      this.loadingService.setLoading(false);
     });
 
     return this.user$;

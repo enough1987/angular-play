@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthServiceService } from '@core/services/auth-service.service';
+import { AuthService } from '@app/core/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,13 +9,14 @@ import { AuthServiceService } from '@core/services/auth-service.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthViewComponent {
+  checked = false;
   authenticated = false;
   user = {
     login: '',
     password: '',
   };
 
-  constructor(private router: Router, public authServiceService: AuthServiceService) {
+  constructor(private router: Router, public authServiceService: AuthService) {
     authServiceService.isAuthenticated().subscribe((authenticated) => {
       this.authenticated = authenticated;
       if(this.authenticated) {
@@ -26,7 +27,7 @@ export class AuthViewComponent {
 
   login() {
     if(!this.user.login || !this.user.password) {
-      console.error('there are no email or password');
+      this.checked = true;
       return;
     }
     this.authServiceService.login(this.user.login, this.user.password);

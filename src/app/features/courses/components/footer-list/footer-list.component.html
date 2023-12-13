@@ -1,5 +1,7 @@
 <div class="footer-list">
-    <p class="load-more"
+    <p 
+        *ngIf="canLoad"
+        class="load-more"
         (click)="loadMore()"
     >Load more</p>
 </div>
